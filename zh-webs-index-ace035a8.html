@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500彩票网 — 知识库入口 · 持续关注</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+            background: linear-gradient(145deg, #fef2e0 0%, #fde6c9 100%);
+            min-height: 100vh;
+            padding: 2rem 1.5rem 3rem;
+            color: #2a241c;
+            line-height: 1.7;
+        }
+
+        .page-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* header / 文章头 */
+        .site-header {
+            text-align: center;
+            margin-bottom: 2.8rem;
+        }
+
+        .site-header h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #b45f2b, #c7813b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.3rem;
+        }
+
+        .site-header .sub {
+            font-size: 1rem;
+            color: #7d634b;
+            border-top: 1px solid #dbbc9c;
+            display: inline-block;
+            padding-top: 0.4rem;
+            letter-spacing: 0.3px;
+        }
+
+        /* 目录感网格 — 信息块 */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        @media (max-width: 680px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 1.6rem;
+            }
+        }
+
+        .card {
+            background: #fffcf7;
+            border-radius: 24px;
+            padding: 1.6rem 1.8rem 1.9rem;
+            box-shadow: 0 8px 20px rgba(160, 100, 50, 0.08), 0 2px 6px rgba(150, 90, 40, 0.05);
+            transition: transform 0.15s ease, box-shadow 0.2s;
+            border: 1px solid #f0e2d4;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(160, 90, 40, 0.12), 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #754e2d;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 2px solid #eddccb;
+            display: inline-block;
+        }
+
+        .card p, .card li {
+            font-size: 0.95rem;
+            color: #3c3228;
+        }
+
+        .card ul {
+            list-style: none;
+            margin-top: 0.3rem;
+        }
+
+        .card li {
+            margin-bottom: 0.6rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .card li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #b97f4b;
+            font-weight: bold;
+        }
+
+        .notice-box {
+            background: #fff3e7;
+            border-left: 4px solid #d99e6a;
+            border-radius: 16px;
+            padding: 1rem 1.6rem;
+            margin: 2rem 0 2.4rem;
+            color: #4f3a28;
+            font-size: 0.95rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.5rem 1rem;
+        }
+
+        .notice-box strong {
+            color: #9a6537;
+        }
+
+        /* 相关区 — 入口句子 */
+        .related-links {
+            background: #fffcf7;
+            border-radius: 24px;
+            padding: 1.6rem 2rem;
+            box-shadow: 0 6px 16px rgba(160, 90, 40, 0.07);
+            margin-bottom: 2rem;
+            border: 1px solid #e8d6c4;
+        }
+
+        .related-links h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #7f5b3b;
+            letter-spacing: 0.3px;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            opacity: 0.7;
+        }
+
+        .related-links p {
+            font-size: 1rem;
+            color: #332b23;
+        }
+
+        .related-links a {
+            color: #b45f2b;
+            text-decoration: none;
+            font-weight: 500;
+            background: #f3e3d5;
+            padding: 0.15rem 0.7rem;
+            border-radius: 40px;
+            transition: background 0.15s, color 0.1s;
+            white-space: nowrap;
+        }
+
+        .related-links a:hover {
+            background: #dbb594;
+            color: #4a2e1b;
+        }
+
+        .faq-mini {
+            background: #fffcf7;
+            border-radius: 24px;
+            padding: 1.6rem 1.8rem 1.7rem;
+            margin-top: 2rem;
+            box-shadow: 0 6px 18px rgba(150, 80, 30, 0.05);
+            border: 1px solid #eadbcb;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: #754e2d;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-answer {
+            font-size: 0.93rem;
+            color: #443a30;
+            padding-left: 0.5rem;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #dcc3ae, transparent);
+            margin: 1.8rem 0 1.2rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #957b64;
+            margin-top: 2.5rem;
+            border-top: 1px solid #e0ccba;
+            padding-top: 1.3rem;
+            letter-spacing: 0.2px;
+        }
+
+        .badge-pill {
+            display: inline-block;
+            background: #ebd7c4;
+            color: #684a30;
+            padding: 0.1rem 0.9rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-right: 0.6rem;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+    <header class="site-header">
+        <h1>500 彩票 · 知识库</h1>
+        <span class="sub">持续更新的信息档案 · 再次访问与收藏</span>
+    </header>
+
+    <!-- 目录式布局：四张卡片 -->
+    <div class="info-grid">
+        <!-- 介绍区 / 再次访问 -->
+        <div class="card">
+            <div class="card-title">📌 再次访问</div>
+            <p>当你再次打开这个页面，很可能已经隔了一段时间。我们整理了几个不变的锚点：</p>
+            <ul>
+                <li>站点导航始终保持一致的结构</li>
+                <li>常用板块：资讯、数据、工具、社区</li>
+                <li>页面更新日志以周为单位汇总</li>
+                <li>书签栏建议保存至「彩票工具」文件夹</li>
+            </ul>
+        </div>
+
+        <!-- 说明区 / 收藏价值 -->
+        <div class="card">
+            <div class="card-title">⭐ 收藏的价值</div>
+            <p>收藏这个页面不仅是存一个链接。它记录了：</p>
+            <ul>
+                <li>不同时期的彩票相关规则摘要</li>
+                <li>常用数据查询入口的变迁</li>
+                <li>行业通知与平台调整备忘</li>
+                <li>一个稳定的内容起点</li>
+            </ul>
+            <p style="margin-top:0.6rem; font-size:0.9rem; color:#6f523b;">如果你正在寻找一个可靠的信息参照点，<strong>这个页面值得保留</strong>。</p>
+        </div>
+
+        <!-- 提示区 / 使用注意 -->
+        <div class="card">
+            <div class="card-title">💡 提示摘要</div>
+            <ul>
+                <li>彩票为随机游戏，理性参与</li>
+                <li>所有规则以官方最新公告为准</li>
+                <li>网站不提供预测、包赢服务</li>
+                <li>定期清理浏览器缓存以保证展示正常</li>
+                <li>收藏后偶尔回来看看结构变化</li>
+            </ul>
+        </div>
+
+        <!-- 相关信息区 / 场景描述 -->
+        <div class="card">
+            <div class="card-title">📎 关联场景</div>
+            <p>以下场景可能让你再次需要这个页面：</p>
+            <ul>
+                <li>查某个彩种的历史规则说明</li>
+                <li>对比不同平台的开奖节奏</li>
+                <li>关注政策或合规动态</li>
+                <li>作为笔记或研究的基础索引</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 提示框 -->
+    <div class="notice-box">
+        <span>📬 <strong>持续关注提醒</strong></span>
+        <span>目前没有重大变更，可以每 2–4 周回来浏览一次。如果看到页面顶部出现红色提示条，说明内容有结构性更新。</span>
+    </div>
+
+    <!-- 入口句子 (包含严格链接) -->
+    <div class="related-links">
+        <h3>相关信息区</h3>
+        <p>
+            <span class="badge-pill">入口</span>
+            如果你需要回到熟悉的平台，可以直接访问 
+            <a href="https://zh-webs-500.com">500彩票网</a> 
+            ，那里保留了完整的功能模块。这个介绍页始终作为辅助知识库供你参考。
+        </p>
+        <p style="margin-top:0.85rem;">
+            <span class="badge-pill">收藏夹</span>
+            建议将 <a href="https://zh-webs-500.com">500彩票网</a> 与当前页面同时收藏，分别对应操作端与信息端。长期关注者可以定期对比两边的规则说明板块。
+        </p>
+    </div>
+
+    <!-- FAQ摘要 -->
+    <div class="faq-mini">
+        <h3 style="font-size:1rem; font-weight:600; color: #6c4f33; margin-bottom:0.9rem; border-bottom:1px solid #eddccb; display:inline-block; padding-right:1rem;">❓ 常见问题摘要</h3>
+        <div class="faq-item">
+            <span class="faq-question">这个页面会经常变化吗？</span>
+            <div class="faq-answer">内容结构相对稳定，但知识库条目会随平台更新而补充。每次变化都会在页面顶部注明日期。</div>
+        </div>
+        <div class="faq-item">
+            <span class="faq-question">我该如何判断信息时效？</span>
+            <div class="faq-answer">页面底部会显示最近一次内容修订的月份。如果超过三个月，建议结合 <a href="https://zh-webs-500.com" style="color:#b45f2b; text-decoration:underline; background:transparent; padding:0;">500彩票网</a> 的最新公告交叉确认。</div>
+        </div>
+        <div class="faq-item">
+            <span class="faq-question">收藏后还需要做什么？</span>
+            <div class="faq-answer">建议每季度回来浏览一次卡片区，重点关注「提示摘要」和「相关信息区」是否有新增条目。</div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="footer-note">
+        内容方向：知识库入口 · 修订记录：2025年4月 · 仅供信息参考，不构成任何建议
+    </div>
+
+</div>
+</body>
+</html>
